@@ -46,8 +46,6 @@ local parse_slides = function(lines)
     else
       table.insert(current_slide.body, line)
     end
-
-    table.insert(current_slide, line)
   end
 
   table.insert(slides.slides, current_slide)
@@ -217,15 +215,10 @@ M.start_presentation = function(opts)
   set_slide_content(state.current_slide)
 end
 
-M.start_presentation {
-  bufnr = 4, -- echo nvim_get_current_buf()
-}
+--[[ M.start_presentation { ]]
+--[[   bufnr = 3, -- echo nvim_get_current_buf() ]]
+--[[ } ]]
 
---[[ vim.print(parse_slides { ]]
---[[   '# Hello', ]]
---[[   'This is something else', ]]
---[[   '# World', ]]
---[[   'This is another thing', ]]
---[[ }) ]]
+M._parse_slides = parse_slides
 
 return M
